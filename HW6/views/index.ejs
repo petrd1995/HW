@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- = safe -->
+    <!-- - unsafe -->
+    
+    <h1>Todo List</h1>
+    
+    <ul>
+    
+        <% for (const todo of todos) { %>
+            <li>
+                <%= todo.title %>
+                    <a href="/remove-todo/<%= todo.id %>">Remove</a>
+                    <a href="/edit-todo/<%= todo.id %>">
+                        <%= 'Edit' %>
+                    </a>
+                    priority:
+                    <%= todo.priority===0 ? 'Low' : '' %>
+                    <%= todo.priority===1 ? 'Medium' : '' %>
+                    <%= todo.priority===2 ? 'High' : '' %>
+
+
+            </li>
+            <% } %>
+    </ul>
+    
+    <form method="post" , action="/add-todo">
+        <input placeholder="Name of todo" , name="title">
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

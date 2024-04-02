@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= todo.title %>
+    </title>
+</head>
+
+<body>
+    <h1>
+        <%= todo.title %>
+    </h1>
+    <hr>
+
+    <a href="/remove-todo/<%= todo.id %>">Remove</a>
+    <a href="/toggle-todo/<%= todo.id %>">
+        <%= todo.done ? 'Done' : 'Undone' %>
+    </a>
+
+    <form method="post" action="/update-priority/<%= todo.id %>">
+        <label for="priority">Priority:</label>
+        <select name="priority" id="priority">
+            <option value="0" <%=todo.priority===0 ? 'selected' : '' %>>Low</option>
+            <option value="1" <%=todo.priority===1 ? 'selected' : '' %>>Medium</option>
+            <option value="2" <%=todo.priority===2 ? 'selected' : '' %>>High</option>
+        </select>
+        <button type="submit">Update Priority</button>
+    </form>
+
+    <hr>
+
+    <form method="post" action="/update-todo/<%= todo.id %>">
+        <h2>Edit Todo</h2>
+        <input type="text" name="title" value="<%= todo.title %>">
+        <button type="submit">Update Todo</button>
+    </form>
+
+    <hr>
+
+    <a href="/">Back to Todo List</a>
+</body>
+
+</html>
